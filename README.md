@@ -61,7 +61,7 @@ SSH: localhost:2222
 Web: http://localhost:8080
 
 # Kali Linux:
-    bashdocker exec -it ctf_kali_attacker /bin/bash
+    docker exec -it ctf_kali_attacker /bin/bash
 
 🎯 Challenge Overview
 
