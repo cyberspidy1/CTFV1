@@ -32,7 +32,8 @@ Python 3.8+
 1. Clone and Deploy
 bash# Download the script
 git clone https://github.com/cyberspidy1/CTFV1.git
-cd ctf-docker-environment
+
+cd CTFV1
 
 # Run the deployment script
 sudo python3 ctf_docker_setup.py
