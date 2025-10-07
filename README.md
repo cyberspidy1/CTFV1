@@ -3,8 +3,6 @@ An automated, isolated Capture The Flag (CTF) environment for learning penetrati
 ⚠️ Security Warning
 EDUCATIONAL USE ONLY: This project creates intentionally vulnerable systems for cybersecurity training. Never expose these containers to the internet or use in production environments. Use only in isolated lab/testing environments.
 
-https://img.shields.io/badge/python-3.8+-blue.svg
-https://img.shields.io/badge/docker-required-blue.svg
 
 ✨ Features
 
@@ -34,10 +32,10 @@ https://img.shields.io/badge/docker-required-blue.svg
     10GB+ free disk space
 
 1. Clone and Deploy
-      bash# Download the script
-      git clone https://github.com/cyberspidy1/CTFV1.git
 
-      cd CTFV1
+# Download the script
+    git clone https://github.com/cyberspidy1/CTFV1.git
+    cd CTFV1
 
 # Run the deployment script
     sudo python3 ctf_docker_setup.py
@@ -53,7 +51,8 @@ The script will:
 Build time: 5-10 minutes (downloads Kali Linux and installs tools)
 
 2. Access the Environment
-    Dashboard (Flag Tracker):
+
+# Dashboard (Flag Tracker):
     http://localhost:5000
 
 Vulnerable Target:
@@ -61,12 +60,10 @@ Vulnerable Target:
 SSH: localhost:2222
 Web: http://localhost:8080
 
-Kali Linux:
-bashdocker exec -it ctf_kali_attacker /bin/bash
+# Kali Linux:
+    bashdocker exec -it ctf_kali_attacker /bin/bash
+
 🎯 Challenge Overview
-Vulnerabilities Implemented
-VulnerabilityTypeDifficultyFlagWeak SSH CredentialsAuthenticationEasyFlag 1PHP Command InjectionWeb ApplicationMediumFlag 2Sudo MisconfigurationPrivilege EscalationMediumFlag 3
-Flag Locations
 
 Flag 1: /home/ctfuser/.flag1.txt - Requires SSH access
 Flag 2: /var/www/.flag2.txt - Requires web exploitation
@@ -102,37 +99,38 @@ The find command can be exploited for privilege escalation.
 
 
 🏆 Submitting Flags
-Method 1: From Kali Container
-bashcurl -X POST http://dashboard:5000/submit \
-  -H "Content-Type: application/json" \
-  -d '{"flag":"CTF{decoded_flag_here}"}'
-Method 2: From Target (if compromised)
-bashpython3 /usr/local/bin/submit_flag.py <base64_encoded_flag>
-Method 3: From Host Machine
-bashcurl -X POST http://localhost:5000/submit \
-  -H "Content-Type: application/json" \
-  -d '{"flag":"CTF{decoded_flag_here}"}'
+# Method 1: From Kali Container
+        curl -X POST http://dashboard:5000/submit \
+        -H "Content-Type: application/json" \
+        -d '{"flag":"CTF{decoded_flag_here}"}'
+# Method 2: From Target (if compromised)
+    python3 /usr/local/bin/submit_flag.py <base64_encoded_flag>
+#  Method 3: From Host Machine
+    curl -X POST http://localhost:5000/submit \
+      -H "Content-Type: application/json" \
+      -d '{"flag":"CTF{decoded_flag_here}"}'
+
 The dashboard updates in real-time when flags are captured! 🎉
 
 
 🔧 Management Commands
-    View Logs
-      bash cd ctf_environment
-      docker-compose logs -f
-    Restart Services
-      bashdocker-compose restart
+# View Logs
+    bash cd ctf_environment
+    docker-compose logs -f
+# Restart Services
+    bashdocker-compose restart
 
-Stop Environment
+# Stop Environment
     bashdocker-compose down
-Rebuild from Scratch
+# Rebuild from Scratch
     bashdocker-compose down -v
     docker-compose up -d --build
-Access Container Shells
+# Access Container Shells
     bash# Kali Linux
-docker exec -it ctf_kali_attacker /bin/bash
+    docker exec -it ctf_kali_attacker /bin/bash
 
 # Vulnerable Target
-docker exec -it ctf_vulnerable_target /bin/bash
+    docker exec -it ctf_vulnerable_target /bin/bash
 
 # Dashboard
 docker exec -it ctf_dashboard /bin/bash
@@ -167,12 +165,14 @@ Can't connect to containers
 bashdocker network inspect ctf_environment_ctf_network
 Ports already in use
 Edit docker-compose.yml to change ports:
-yamlports:
+yaml ports:
   - "2223:22"  # Change 2222 to 2223
   - "8081:80"  # Change 8080 to 8081
-Reset everything
-bashdocker-compose down -v
-sudo python3 ctf_docker_setup.py
+
+# Reset everything
+    bashdocker-compose down -v
+    sudo python3 ctf_docker_setup.py
+
 🎓 Learning Resources
 
 OWASP Top 10
