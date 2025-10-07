@@ -2,6 +2,10 @@
 An automated, isolated Capture The Flag (CTF) environment for learning penetration testing and cybersecurity concepts. Features intentionally vulnerable systems, a Kali Linux attacker machine, and a real-time flag tracking dashboard.
 ⚠️ Security Warning
 EDUCATIONAL USE ONLY: This project creates intentionally vulnerable systems for cybersecurity training. Never expose these containers to the internet or use in production environments. Use only in isolated lab/testing environments.
+
+https://img.shields.io/badge/python-3.8+-blue.svg
+https://img.shields.io/badge/docker-required-blue.svg
+
 ✨ Features
 
 🐧 Kali Linux Attack Machine: Pre-configured with Metasploit, Nmap, Hydra, and 15+ pentesting tools
@@ -12,42 +16,46 @@ EDUCATIONAL USE ONLY: This project creates intentionally vulnerable systems for 
 🚀 One-Click Deployment: Single Python script sets up entire environment
 
 🎓 Learning Objectives
-This CTF teaches:
+    This CTF teaches:
 
-Network reconnaissance and scanning
-Credential brute-forcing
-Web application vulnerabilities (Command Injection)
-SSH exploitation
-Linux privilege escalation
-Post-exploitation techniques
+      Network reconnaissance and scanning
+      Credential brute-forcing
+      Web application vulnerabilities (Command Injection)
+      SSH exploitation
+      Linux privilege escalation
+      Post-exploitation techniques
 
 🛠️ Prerequisites
 
-Docker Engine 20.10+
-Docker Compose 2.0+
-Python 3.8+
-4GB+ RAM
-10GB+ free disk space
+    Docker Engine 20.10+
+    Docker Compose 2.0+
+    Python 3.8+
+    4GB+ RAM
+    10GB+ free disk space
 
 1. Clone and Deploy
-bash# Download the script
-git clone https://github.com/cyberspidy1/CTFV1.git
+      bash# Download the script
+      git clone https://github.com/cyberspidy1/CTFV1.git
 
-cd CTFV1
+      cd CTFV1
 
 # Run the deployment script
-sudo python3 ctf_docker_setup.py
+    sudo python3 ctf_docker_setup.py
+
+
 The script will:
 
-Create project structure
-Build 3 Docker containers
-Set up private network
-Deploy the entire environment
+    Create project structure
+    Build 3 Docker containers
+    Set up private network
+    Deploy the entire environment
 
 Build time: 5-10 minutes (downloads Kali Linux and installs tools)
+
 2. Access the Environment
-Dashboard (Flag Tracker):
-http://localhost:5000
+    Dashboard (Flag Tracker):
+    http://localhost:5000
+
 Vulnerable Target:
 
 SSH: localhost:2222
@@ -65,6 +73,7 @@ Flag 2: /var/www/.flag2.txt - Requires web exploitation
 Flag 3: /root/flag3.txt - Requires root privileges
 
 All flags are base64 encoded.
+
 📖 Walkthrough Hints
 <details>
 <summary>🔍 Hint 1: Reconnaissance</summary>
@@ -90,6 +99,8 @@ Check sudo permissions:
 bashsudo -l
 The find command can be exploited for privilege escalation.
 </details>
+
+
 🏆 Submitting Flags
 Method 1: From Kali Container
 bashcurl -X POST http://dashboard:5000/submit \
@@ -102,19 +113,22 @@ bashcurl -X POST http://localhost:5000/submit \
   -H "Content-Type: application/json" \
   -d '{"flag":"CTF{decoded_flag_here}"}'
 The dashboard updates in real-time when flags are captured! 🎉
+
+
 🔧 Management Commands
-View Logs
-bashcd ctf_environment
-docker-compose logs -f
-Restart Services
-bashdocker-compose restart
+    View Logs
+      bash cd ctf_environment
+      docker-compose logs -f
+    Restart Services
+      bashdocker-compose restart
+
 Stop Environment
-bashdocker-compose down
+    bashdocker-compose down
 Rebuild from Scratch
-bashdocker-compose down -v
-docker-compose up -d --build
+    bashdocker-compose down -v
+    docker-compose up -d --build
 Access Container Shells
-bash# Kali Linux
+    bash# Kali Linux
 docker exec -it ctf_kali_attacker /bin/bash
 
 # Vulnerable Target
