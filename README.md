@@ -1,5 +1,7 @@
 # CTFV1
 An automated, isolated Capture The Flag (CTF) environment for learning penetration testing and cybersecurity concepts. Features intentionally vulnerable systems, a Kali Linux attacker machine, and a real-time flag tracking dashboard.
+
+
 ⚠️ Security Warning
 EDUCATIONAL USE ONLY: This project creates intentionally vulnerable systems for cybersecurity training. Never expose these containers to the internet or use in production environments. Use only in isolated lab/testing environments.
 
