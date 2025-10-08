@@ -57,10 +57,10 @@ Build time: 5-10 minutes (downloads Kali Linux and installs tools)
 # Dashboard (Flag Tracker):
     http://localhost:5000
 
-Vulnerable Target:
+# Vulnerable Target:
 
-SSH: localhost:2222
-Web: http://localhost:8080
+    SSH: localhost:2222
+    Web: http://localhost:8080
 
 # Kali Linux:
     docker exec -it ctf_kali_attacker /bin/bash
